@@ -2,9 +2,8 @@
 
 import express from 'express';
 import bodyParser from "body-parser";
+//import Client from 'pg';
 
-const { Client } = require('pg');
-//const bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json());
@@ -18,6 +17,6 @@ app.get('/', (req, res)=> {
 })
 
 
-app.listen(process.env.PORT, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("Server is running");
 })
