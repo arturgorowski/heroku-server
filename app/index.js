@@ -1,3 +1,3 @@
 //require('babel-core/register')
-import '@babel/core';
-export * from "./app";
+require('@babel/core');
+module.exports = require('./app');
