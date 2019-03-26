@@ -20,6 +20,10 @@ app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
+app.get('/grzyb', (req, res)=>{
+  res.json('łosie sarny dziki XD')
+})
+
 
 app.listen(process.env.PORT, function(){
   console.log("Server is running");
