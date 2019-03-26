@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 
 app.get('/', (req, res)=> {
-  res.json('cos')
+  res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
 
