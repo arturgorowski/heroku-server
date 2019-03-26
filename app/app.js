@@ -12,6 +12,7 @@ app.use(bodyParser.json());
   connectionString: process.env.DATABASE_URL
 });*/
 
+
 app.get('/', (req, res)=> {
   res.json('cos')
 })
