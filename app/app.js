@@ -54,7 +54,7 @@ app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
-app.get('/api/device/:id', (req, res)=>{
+app.get('/api/device', (req, res)=>{
   pool.query('SELECT * FROM device', (error, results)=>{
     if(error){
       throw error
