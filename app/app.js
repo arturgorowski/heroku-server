@@ -22,7 +22,7 @@ const devices = [
   {id_device: 15,name:'oven'}
 ];
 
-const devices = {
+const device = {
 /**
    * Get All Devices
    * @param {object} req 
@@ -60,7 +60,7 @@ app.get('/', (req, res)=> {
     res.json(res.rows)
   })
 })*/
-app.get('/api/devices', devices.getAll);
+app.get('/api/devices', device.getAll);
 
 
 app.listen(process.env.PORT, function(){
