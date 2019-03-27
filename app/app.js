@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 //import Client from 'pg';
 
 
+
 const devices = [
   {id_device: 1,name:'light'},
   {id_device: 2,name:'blinds'},
