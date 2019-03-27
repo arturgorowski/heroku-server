@@ -1,7 +1,7 @@
 'use strict';
 import express from 'express';
 import bodyParser from "body-parser";
-require('babel/polyfill');
+import "@babel/polyfill";
 //import Client from 'pg';
 
 
