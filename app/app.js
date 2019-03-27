@@ -22,7 +22,7 @@ app.get('/api/device', (req, res)=>{
     if(error){
       throw error
     }
-    res.status(200).json(res.rows)
+    res.json(res.rows)
   })
 })
 
