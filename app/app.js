@@ -7,21 +7,24 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-
-
 app.use(bodyParser.json());
 
-/*const pool = new Pool({
+const Pool = require('pg').Pool
+const pool = new Pool({
   connectionString: process.env.DATABASE_URL
-});*/
-
+})
 
 app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
-app.get('/grzyb', (req, res)=>{
-  res.json('łosie sarny dziki XD')
+app.get('/api/device', (req, res)=>{
+  pool.query('SELECT * FROM device', (error, results)=>{
+    if(error){
+      throw error
+    }
+    res.status(200).json(res.rows)
+  })
 })
 
 
