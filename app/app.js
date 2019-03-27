@@ -22,6 +22,24 @@ const devices = [
   {id_device: 15,name:'oven'}
 ];
 
+const devices = {
+/**
+   * Get All Devices
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} devices array
+   */
+  async getAll(req, res) {
+    const findAllQuery = 'SELECT * FROM devices';
+    try {
+      const { rows, rowCount } = await db.query(findAllQuery);
+      return res.status(200).send({ rows, rowCount });
+    } catch(error) {
+      return res.status(400).send(error);
+    }
+  }
+}
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -34,19 +52,15 @@ app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
-app.get('/api/device/:id', (req, res)=>{
-  /*pool.query('SELECT * FROM device', (error, results)=>{
+/*app.get('/api/device/:id', (req, res)=>{
+  pool.query('SELECT * FROM device', (error, results)=>{
     if(error){
       throw error
     }
     res.json(res.rows)
-  })*/
-  const device = devices.find((p) => p.id === parseInt(req.params.id));
-  if (!device) {
-    res.status(404).send("Post NotFound");
-  }
-  res.send(device);
-})
+  })
+})*/
+app.get('/api/devices', devices.getAll);
 
 
 app.listen(process.env.PORT, function(){
