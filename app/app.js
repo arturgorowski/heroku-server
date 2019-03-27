@@ -2,7 +2,8 @@
 import express from 'express';
 import bodyParser from "body-parser";
 import "@babel/polyfill";
-//import Client from 'pg';
+
+import Client from 'pg';
 
 
 const devices = [
