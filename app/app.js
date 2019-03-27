@@ -1,7 +1,7 @@
 'use strict';
 import express from 'express';
 import bodyParser from "body-parser";
-
+require('babel-polyfill');
 //import Client from 'pg';
 
 
@@ -30,7 +30,7 @@ const device = {
    * @param {object} res 
    * @returns {object} devices array
    */
-  getAll(req, res) {
+  async getAll(req, res) {
     const findAllQuery = 'SELECT * FROM devices';
     try {
       const { rows, rowCount } = await db.query(findAllQuery);
