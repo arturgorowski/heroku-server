@@ -1,9 +1,9 @@
 'use strict';
 import express from 'express';
 import bodyParser from "body-parser";
-import "@babel/polyfill";
+//import "@babel/polyfill";
 
-import Client from 'pg';
+//import Client from 'pg';
 
 
 const devices = [
@@ -23,14 +23,14 @@ const devices = [
   {id_device: 14,name:'washer'},
   {id_device: 15,name:'oven'}
 ];
-
+/*
 const device = {
 /**
    * Get All Devices
    * @param {object} req 
    * @param {object} res 
    * @returns {object} devices array
-   */
+   *
   async getAll(req, res) {
     const findAllQuery = 'SELECT * FROM devices';
     try {
@@ -40,7 +40,7 @@ const device = {
       return res.status(400).send(error);
     }
   }
-}
+}*/
 
 const app = express();
 app.use(bodyParser.json());
@@ -54,15 +54,16 @@ app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
-/*app.get('/api/device/:id', (req, res)=>{
+app.get('/api/device/:id', (req, res)=>{
   pool.query('SELECT * FROM device', (error, results)=>{
     if(error){
       throw error
     }
     res.json(res.rows)
   })
-})*/
-app.get('/api/devices', device.getAll);
+})
+
+//app.get('/api/devices', device.getAll);
 
 
 app.listen(process.env.PORT, function(){
