@@ -41,11 +41,11 @@ app.get('/api/device/:id', (req, res)=>{
     }
     res.json(res.rows)
   })*/
-  const post = posts.find((p) => p.id === parseInt(req.params.id));
-  if (!post) {
+  const device = devices.find((p) => p.id === parseInt(req.params.id));
+  if (!device) {
     res.status(404).send("Post NotFound");
   }
-  res.send(post);
+  res.send(device);
 })
 
 
