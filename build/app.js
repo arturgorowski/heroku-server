@@ -4,9 +4,10 @@ var _express = _interopRequireDefault(require("express"));
 
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
+var _pg = _interopRequireDefault(require("pg"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import Client from 'pg';
 var app = (0, _express.default)();
 app.use(_bodyParser.default.json());
 
