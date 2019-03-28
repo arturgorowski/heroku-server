@@ -2,13 +2,13 @@
 
 import express from 'express';
 import bodyParser from "body-parser";
-//import Client from 'pg';
+import Pool from 'pg';
 
 
 const app = express();
 app.use(bodyParser.json());
 
-const Pool = require('pg').Pool
+//const Pool = require('pg').Pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 })
