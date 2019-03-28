@@ -2,7 +2,7 @@
 
 import express from 'express';
 import bodyParser from "body-parser";
-import Client from 'pg';
+//import Client from 'pg';
 
 
 const app = express();
