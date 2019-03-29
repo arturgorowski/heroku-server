@@ -49,16 +49,48 @@ const pool = new Pool({
       } catch(error) {
         return res.status(400).send(error);
       }
+<<<<<<< HEAD
     }
   }*/
+=======
+    },
+
+    async create(req, res) {
+      const text = `INSERT INTO
+        device(id_device, name)
+        VALUES($1, $2)
+        returning *`;
+      const values = [
+        uuidv4(),
+        req.body.id_device,
+        req.body.name,
+        moment(new Date()),
+        moment(new Date())
+      ];
+  
+      try {
+        const { rows } = await db.query(text, values);
+        return res.status(201).send(rows[0]);
+      } catch(error) {
+        return res.status(400).send(error);
+      }
+    },
+  }
+>>>>>>> 5374d6b253bd7d4aad7873ad33f7872301fd92ac
 
 app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
+<<<<<<< HEAD
 //app.get('/api/devices', device.getAll);
 
+=======
+app.get('/api/devices', device.getAll);
+app.post('/api/addDevices', device.create);
+>>>>>>> 5374d6b253bd7d4aad7873ad33f7872301fd92ac
 
 app.listen(process.env.PORT, function(){
   console.log("Server is running");
 })
+
