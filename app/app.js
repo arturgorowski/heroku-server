@@ -3,7 +3,7 @@
 import express from 'express';
 import bodyParser from "body-parser";
 
-/*const devices = [
+const devices = [
   {id_device: 1,name:'light'},
   {id_device: 2,name:'blinds'},
   {id_device: 3,name:'air_conditioning'},
@@ -19,8 +19,11 @@ import bodyParser from "body-parser";
   {id_device: 13,name:'TV'},
   {id_device: 14,name:'washer'},
   {id_device: 15,name:'oven'}
-];*/
+];
 
+app.get('api/devices', (req, res)=>{
+  res.send(devices);
+})
 
 
 const app = express();
@@ -31,13 +34,13 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 })
 
-const device = {
+/*const device = {
   /**
      * Get All Devices
      * @param {object} req 
      * @param {object} res 
      * @returns {object} devices array
-     */
+     *
     async getAll(req, res) {
       const findAllQuery = 'SELECT * FROM device';
       try {
@@ -47,13 +50,13 @@ const device = {
         return res.status(400).send(error);
       }
     }
-  }
+  }*/
 
 app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
-app.get('/api/devices', device.getAll);
+//app.get('/api/devices', device.getAll);
 
 
 app.listen(process.env.PORT, function(){
