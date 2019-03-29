@@ -18,12 +18,19 @@ app.get('/', (req, res)=> {
 })
 
 app.get('/api/device', (req, res)=>{
-  pool.query('SELECT * FROM device', (error, results)=>{
+  /*pool.query('SELECT * FROM device', (error, results)=>{
     if(error){
       throw error
     }
     res.status(200).json(res.rows)
-  })
+  })*/
+  const findAllQuery = 'SELECT * FROM device';
+    try {
+      const { rows, rowCount } = pool.query(findAllQuery);
+      return res.status(200).send({ rows, rowCount });
+    } catch(error) {
+      return res.status(400).send(error);
+    }
 })
 
 
