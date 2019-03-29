@@ -27,9 +27,9 @@ app.get('/api/device', (req, res)=>{
   const findAllQuery = 'SELECT * FROM device';
     try {
       const { rows, rowCount } = pool.query(findAllQuery);
-      return res.status(200).send({ rows, rowCount });
+      return res.status(200).json({ rows, rowCount });
     } catch(error) {
-      return res.status(400).send(error);
+      return res.status(400).json(error);
     }
 })
 
