@@ -76,7 +76,7 @@ app.get('/', (req, res)=> {
 })
 
 app.get('/api/devices', device.getAll);
-app.post('/api/devices', device.create);
+app.post('/api/addDevices', device.create);
 
 app.listen(process.env.PORT, function(){
   console.log("Server is running");
