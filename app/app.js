@@ -4,7 +4,7 @@ import express from 'express';
 import bodyParser from "body-parser";
 //import Client from 'pg';
 
-const devices = [
+/*const devices = [
   {id_device: 1,name:'light'},
   {id_device: 2,name:'blinds'},
   {id_device: 3,name:'air_conditioning'},
@@ -20,7 +20,9 @@ const devices = [
   {id_device: 13,name:'TV'},
   {id_device: 14,name:'washer'},
   {id_device: 15,name:'oven'}
-];
+];*/
+
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -29,6 +31,24 @@ const Pool = require('pg').Pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 })
+
+const device = {
+  /**
+     * Get All Devices
+     * @param {object} req 
+     * @param {object} res 
+     * @returns {object} devices array
+     */
+    async getAll(req, res) {
+      const findAllQuery = 'SELECT * FROM devices';
+      try {
+        const { rows, rowCount } = await pool.query(findAllQuery);
+        return res.status(200).send({ rows, rowCount });
+      } catch(error) {
+        return res.status(400).send(error);
+      }
+    }
+  }
 
 app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
@@ -50,13 +70,15 @@ app.get('/', (req, res)=> {
     }
 })*/
 
-app.get('/api/device/:id', (req, res) => {
+app.get('/api/devices', device.getAll);
+
+/*app.get('/api/device/:id', (req, res) => {
   const device = devices.find((p) => p.id === parseInt(req.params.id));
   if (!device) {
     res.status(404).send("Post NotFound");
   }
   res.send(device);
-})
+})*/
 
 
 
