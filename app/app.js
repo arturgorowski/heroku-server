@@ -2,7 +2,6 @@
 
 import express from 'express';
 import bodyParser from "body-parser";
-//import Client from 'pg';
 
 /*const devices = [
   {id_device: 1,name:'light'},
@@ -54,32 +53,7 @@ app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
-/*app.get('/api/device', (req, res)=>{
-  pool.query('SELECT * FROM device', (error, results)=>{
-    if(error){
-      throw error
-    }
-    res.status(200).json(res.rows)
-  })
-  const findAllQuery = 'SELECT * FROM device';
-    try {
-      const { rows, rowCount } = pool.query(findAllQuery);
-      return res.status(200).json({ rows, rowCount });
-    } catch(error) {
-      return res.status(400).json(error);
-    }
-})*/
-
 app.get('/api/devices', device.getAll);
-
-/*app.get('/api/device/:id', (req, res) => {
-  const device = devices.find((p) => p.id === parseInt(req.params.id));
-  if (!device) {
-    res.status(404).send("Post NotFound");
-  }
-  res.send(device);
-})*/
-
 
 
 app.listen(process.env.PORT, function(){
