@@ -55,9 +55,8 @@ const device = {
         returning *`;
       const values = [
         uuidv4(),
-        req.body.success,
-        req.body.low_point,
-        req.body.take_away,
+        req.body.id_device,
+        req.body.name,
         moment(new Date()),
         moment(new Date())
       ];
