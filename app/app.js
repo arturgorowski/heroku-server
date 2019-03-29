@@ -40,7 +40,7 @@ const device = {
      * @returns {object} devices array
      */
     async getAll(req, res) {
-      const findAllQuery = 'SELECT * FROM devices';
+      const findAllQuery = 'SELECT * FROM device';
       try {
         const { rows, rowCount } = await pool.query(findAllQuery);
         return res.status(200).send({ rows, rowCount });
