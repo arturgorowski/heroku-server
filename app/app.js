@@ -24,7 +24,7 @@ const devices = [
 
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
 /*const Pool = require('pg').Pool
 const pool = new Pool({
