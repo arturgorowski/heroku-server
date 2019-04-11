@@ -26,14 +26,12 @@ const devices = [
 const app = express();
 app.use(bodyParser.json());
 
-const Pool = require('pg').Pool
+/*const Pool = require('pg').Pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
-})
+})*/
 
-app.get('api/devices', (req, res)=>{
-  res.send(devices);
-})
+
 
 
 /*const device = {
@@ -56,6 +54,10 @@ app.get('api/devices', (req, res)=>{
 
 app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
+})
+
+app.get('api/devices', (req, res)=>{
+  res.send(devices);
 })
 
 //app.get('/api/devices', device.getAll);
