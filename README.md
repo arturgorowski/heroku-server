@@ -1,1 +1,1 @@
-# webApp-backend
+# intelligent-home backend
