@@ -21,9 +21,6 @@ const devices = [
   {id_device: 15,name:'oven'}
 ];
 
-app.get('api/devices', (req, res)=>{
-  res.send(devices);
-})
 
 
 const app = express();
@@ -33,6 +30,11 @@ const Pool = require('pg').Pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 })
+
+app.get('api/devices', (req, res)=>{
+  res.send(devices);
+})
+
 
 /*const device = {
   /**
