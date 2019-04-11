@@ -56,7 +56,7 @@ app.get('/', (req, res)=> {
   res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
 })
 
-app.get('api/devices', (req, res)=>{
+app.get('/api/devices', (req, res)=>{
   res.send(devices);
 })
 
