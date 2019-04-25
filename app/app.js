@@ -33,28 +33,8 @@ const pool = new Pool({
 })*/
 
 
-
-
-/*const device = {
-  /**
-     * Get All Devices
-     * @param {object} req 
-     * @param {object} res 
-     * @returns {object} devices array
-     *
-    async getAll(req, res) {
-      const findAllQuery = 'SELECT * FROM device';
-      try {
-        const { rows, rowCount } = await pool.query(findAllQuery);
-        return res.status(200).send({ rows, rowCount });
-      } catch(error) {
-        return res.status(400).send(error);
-      }
-    }
-  }*/
-
 app.get('/', (req, res)=> {
-  res.json('KURWA JA PIERDOLE JEBANY SUKCES!!')
+  res.json('IT WORKS')
 })
 
 app.get('/api/devices', (req, res)=>{
