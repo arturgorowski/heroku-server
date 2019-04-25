@@ -4,21 +4,22 @@ import express from 'express';
 import bodyParser from "body-parser";
 
 const devices = [
-  {id_device: 1,name:'light'},
-  {id_device: 2,name:'blinds'},
-  {id_device: 3,name:'air_conditioning'},
-  {id_device: 4,name:'heating'},
-  {id_device: 5,name:'sound'},
-  {id_device: 6,name:'alarm'},
-  {id_device: 7,name:'cameras'},
-  {id_device: 8,name:'front_door'},
-  {id_device: 9,name:'garage_door'},
-  {id_device: 10,name:'gate'},
-  {id_device: 11,name:'weather_station'},
-  {id_device: 12,name:'fridge'},
-  {id_device: 13,name:'TV'},
-  {id_device: 14,name:'washer'},
-  {id_device: 15,name:'oven'}
+  {id_device: 1,name:'Light', icon:'lightbulb-on'},
+  {id_device: 2,name:'Blinds', icon:'blinds'},
+  {id_device: 3,name:'Air conditioning', icon:'air-conditioner'},
+  {id_device: 4,name:'Heating', icon:'fire'},
+  {id_device: 5,name:'Sound', icon:'music'},
+  {id_device: 6,name:'Alarm', icon:'shield-check'},
+  {id_device: 7,name:'Cameras', icon:'camera'},
+  {id_device: 8,name:'Front door', icon:'door'},
+  {id_device: 9,name:'Garage door', icon:'garage'},
+  {id_device: 10,name:'Gate', icon:'gate'},
+  {id_device: 11,name:'Weather station', icon:'apple-icloud'},
+  {id_device: 12,name:'Fridge', icon:'fridge-outline'},
+  {id_device: 13,name:'TV', icon:'television'},
+  {id_device: 14,name:'Washer', icon:'water'},
+  {id_device: 15,name:'Oven', icon:'toaster-oven'},
+  {id_device: 16,name:'Printer', icon:'printer'}
 ];
 
 
