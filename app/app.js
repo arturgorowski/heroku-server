@@ -50,7 +50,7 @@ const getUsers = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(200).send(results.rows)
+    response.status(200).json(results.rows)
   })
 }
 
@@ -62,11 +62,7 @@ app.get('/api/devices', (req, res)=>{
   res.send(devices);
 });
 
-app.get('/users', (req, res)=>{
-  res.send(getUsers);
-});
-
-app.get('/users1', getUsers)
+app.get('/users', getUsers)
 
 
 
