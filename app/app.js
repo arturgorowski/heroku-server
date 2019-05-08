@@ -27,7 +27,7 @@ pool.on('connect', () => {
 });
 
 const getDevices = (request, response) => {
-  pool.query('SELECT * FROM public.device', (error, results) =>{
+  pool.query('SELECT id_device, name, icon FROM public.devices', (error, results) =>{
     if(error){
       throw error
     }
@@ -36,7 +36,7 @@ const getDevices = (request, response) => {
 }
 
 const getUsers = (request, response) => {
-  pool.query('SELECT * FROM public.users', (error, results) => {
+  pool.query('SELECT id_user, first_name, last_name, email, password FROM public.users', (error, results) => {
     if (error) {
       throw error
     }
