@@ -46,7 +46,7 @@ pool.on('connect', () => {
 });
 
 const getUsers = (request, response) => {
-  pool.query('SELECT * FROM user', (error, results) => {
+  pool.query('SELECT * FROM public.users', (error, results) => {
     if (error) {
       throw error
     }
