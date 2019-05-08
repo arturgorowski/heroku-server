@@ -7,9 +7,9 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL
   })
   
-  pool.on('connect', () => {
+ /* pool.on('connect', () => {
     console.log('connected to the db');
-  });
+  });*/
   
   const getDevices = (request, response) => {
     pool.query('SELECT id_device, name, icon FROM public.devices', (error, results) =>{
