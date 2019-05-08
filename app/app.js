@@ -99,7 +99,7 @@ app.get('/users', getUsers)
 
 app.post('/post/users', createUser)
 
-app.delete('/users/:id', deleteUser)
+app.delete('/users/:id_user', deleteUser)
 
 app.listen(process.env.PORT, function(){
   console.log("Server is running");
