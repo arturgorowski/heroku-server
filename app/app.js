@@ -1,7 +1,19 @@
 'use strict';
 
 import express from 'express';
-import bodyParser from "body-parser";
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const app = express();
+app.use(express.json());
+
+//const dotenv = require('dotenv');
+
+//const Pool = require('pg').Pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL
+})
 
 const devices = [
   {id_device: 1,name:'Light', icon:'lightbulb-on'},
@@ -22,29 +34,36 @@ const devices = [
   {id_device: 16,name:'Printer', icon:'printer'}
 ];
 
+pool.on('connect', () => {
+  console.log('connected to the db');
+});
 
-
-const app = express();
-app.use(express.json());
-
-/*const Pool = require('pg').Pool
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
-})*/
-
+const getUsers = (request, response) => {
+  pool.query('SELECT * FROM user ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
 
 app.get('/', (req, res)=> {
   res.json('IT WORKS')
-})
+});
 
 app.get('/api/devices', (req, res)=>{
   res.send(devices);
-})
+});
 
-//app.get('/api/devices', device.getAll);
+app.get('/users', (req, res)=>{
+  res.send(getUsers);
+});
+
+app.get('/users1', getUsers)
+
 
 
 app.listen(process.env.PORT, function(){
   console.log("Server is running");
-})
+});
 

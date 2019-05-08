@@ -1,1 +1,1 @@
-# intelligent-home backend
+# intelligent-home node-api
