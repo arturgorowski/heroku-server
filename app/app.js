@@ -46,7 +46,7 @@ pool.on('connect', () => {
 });
 
 const getUsers = (request, response) => {
-  pool.query('SELECT * FROM user ORDER BY id ASC', (error, results) => {
+  pool.query('SELECT * FROM user ORDER BY id_user ASC', (error, results) => {
     if (error) {
       throw error
     }
