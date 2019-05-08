@@ -54,6 +54,7 @@ const getUsers = (request, response) => {
   })
 }
 
+
 const createUser = (request, response) => {
   const { id_user, first_name, last_name, email, password } = request.body
 
@@ -61,7 +62,7 @@ const createUser = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(201).send(`User added with ID: ${result.insertId}`)
+    response.status(201).json(`User added with ID: ${result.insertId}`)
   })
 }
 
