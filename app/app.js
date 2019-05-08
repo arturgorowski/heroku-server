@@ -45,6 +45,15 @@ pool.on('connect', () => {
   console.log('connected to the db');
 });
 
+const getDevices = (request, response) => {
+  pool.query('SELECT * FROM public.device', (error, results) =>{
+    if(error){
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
 const getUsers = (request, response) => {
   pool.query('SELECT * FROM public.users', (error, results) => {
     if (error) {
@@ -53,7 +62,6 @@ const getUsers = (request, response) => {
     response.status(200).json(results.rows)
   })
 }
-
 
 const createUser = (request, response) => {
   const { id_user, first_name, last_name, email, password } = request.body
@@ -66,6 +74,17 @@ const createUser = (request, response) => {
   })
 }
 
+const deleteUser = (request, response) => {
+  const id = parseInt(request.params.id)
+
+  pool.query('DELETE FROM public.users WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json('User deleted')
+  })
+}
+
 app.get('/', (req, res)=> {
   res.json('IT WORKS')
 });
@@ -74,9 +93,13 @@ app.get('/api/devices', (req, res)=>{
   res.send(devices);
 });
 
+app.get('/devices', getDevices)
+
 app.get('/users', getUsers)
+
 app.post('/post/users', createUser)
 
+app.delete('/users/:id', deleteUser)
 
 app.listen(process.env.PORT, function(){
   console.log("Server is running");
