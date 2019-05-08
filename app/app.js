@@ -75,7 +75,7 @@ const createUser = (request, response) => {
 }
 
 const deleteUser = (request, response) => {
-  const id = parseInt(request.params.id)
+  const id_user = parseInt(request.params.id_user)
 
   pool.query('DELETE FROM public.users WHERE id = $1', [id_user], (error, results) => {
     if (error) {
