@@ -62,7 +62,7 @@ const createUser = (request, response) => {
     if (error) {
       throw error
     }
-    response.status(201).json(`User added with ID: ${result.insertId}`)
+    response.status(201).json('User added')
   })
 }
 
