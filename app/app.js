@@ -22,25 +22,6 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 })
 
-const devices = [
-  {id_device: 1,name:'Light', icon:'lightbulb-on'},
-  {id_device: 2,name:'Blinds', icon:'blinds'},
-  {id_device: 3,name:'Air conditioning', icon:'air-conditioner'},
-  {id_device: 4,name:'Heating', icon:'fire'},
-  {id_device: 5,name:'Sound', icon:'music'},
-  {id_device: 6,name:'Alarm', icon:'shield-check'},
-  {id_device: 7,name:'Cameras', icon:'camera'},
-  {id_device: 8,name:'Front door', icon:'door'},
-  {id_device: 9,name:'Garage door', icon:'garage'},
-  {id_device: 10,name:'Gate', icon:'gate'},
-  {id_device: 11,name:'Weather station', icon:'apple-icloud'},
-  {id_device: 12,name:'Fridge', icon:'fridge-outline'},
-  {id_device: 13,name:'TV', icon:'television'},
-  {id_device: 14,name:'Washer', icon:'water'},
-  {id_device: 15,name:'Oven', icon:'toaster-oven'},
-  {id_device: 16,name:'Printer', icon:'printer'}
-];
-
 pool.on('connect', () => {
   console.log('connected to the db');
 });
@@ -85,15 +66,9 @@ const deleteUser = (request, response) => {
   })
 }
 
-app.get('/', (req, res)=> {
-  res.json('IT WORKS')
-});
+app.get('/', (req, res)=> { res.json('Artur Górowski | Krystian Lisowski') });
 
-app.get('/api/devices', (req, res)=>{
-  res.send(devices);
-});
-
-app.get('/devices', getDevices)
+app.get('/api/devices', getDevices)
 
 app.get('/users', getUsers)
 
