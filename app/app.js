@@ -1,24 +1,25 @@
 'use strict';
 
 import express from 'express';
-import { Pool } from 'pg';
-import dotenv from 'dotenv';
+//import { Pool } from 'pg';
+//import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import { getDevices, getUsers, createUser, deleteUser } from './queries';
 
-dotenv.config();
+//dotenv.config();
 const app = express();
 app.use(express.json());
 
-//app.use(bodyParser.json())
-app.use(
+app.use(bodyParser.json())
+/*app.use(
   bodyParser.urlencoded({
     extended: true,
   })
-)
+)*/
 //const dotenv = require('dotenv');
 
 //const Pool = require('pg').Pool
-const pool = new Pool({
+/*const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 })
 
@@ -64,7 +65,7 @@ const deleteUser = (request, response) => {
     }
     response.status(200).json('User deleted')
   })
-}
+}*/
 
 app.get('/', (req, res)=> { res.json('Artur Górowski | Krystian Lisowski') });
 
