@@ -21,4 +21,3 @@ app.delete('/users/:id_user', deleteUser)
 app.listen(process.env.PORT, function(){
   console.log("Server is running");
 });
-
