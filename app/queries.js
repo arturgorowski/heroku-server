@@ -35,6 +35,7 @@ const createUser = (request, response) => {
         }
         response.status(201).json('User added')
     })
+    
 }
 
 const deleteUser = (request, response) => {
