@@ -52,5 +52,5 @@ module.exports = {
     getDevices,
     getUsers,
     createUser,
-    deleteUser
+    //deleteUser
 }
