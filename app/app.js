@@ -14,7 +14,7 @@ app.get('/api/devices', getDevices)
 
 app.get('/users', getUsers)
 
-//app.post('/post/users', createUser)
+app.post('/post/users', createUser)
 
 app.delete('/users/:id_user', deleteUser)
 
