@@ -37,7 +37,7 @@ const createUser = (request, response) => {
     })
 }
 
-const deleteUser = (request, response) => {
+/*const deleteUser = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
 
     pool.query('DELETE FROM public.users WHERE id_user = $1', [id_user], (error, results) => {
@@ -46,7 +46,7 @@ const deleteUser = (request, response) => {
         }
         response.status(200).json('User deleted')
     })
-}
+}*/
 
 module.exports = {
     getDevices,
