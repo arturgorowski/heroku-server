@@ -1,7 +1,7 @@
 'use strict';
 import express from 'express';
 import bodyParser from 'body-parser';
-import { getDevices, getUsers, createUser, deleteUser } from './queries'
+import { getDevices, getUsers, createUser, deleteUser, createUserDevice, userId, addDevice } from './queries'
 
 const app = express();
 app.use(express.json());
