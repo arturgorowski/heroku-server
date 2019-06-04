@@ -10,13 +10,19 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res)=> { res.json('Artur Górowski | Krystian Lisowski') });
 
-app.get('/api/devices', getDevices)
+app.get('/get/devices', getDevices)
 
-app.get('/users', getUsers)
+app.get('/get/users', getUsers)
 
 app.post('/post/users', createUser)
 
-app.delete('/users/:id_user', deleteUser)
+app.delete('/delete/users/:id_user', deleteUser)
+
+app.post('/post/createUserDevice', createUserDevice)
+
+app.get('/get/userId/:email', userId)
+
+app.post('/post/addDevice', addDevice)
 
 app.listen(process.env.PORT, function(){
   console.log("Server is running");

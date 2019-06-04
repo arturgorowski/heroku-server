@@ -28,13 +28,23 @@ const getUsers = (request, response) => {
 const createUser = (request, response) => {
     const { first_name, last_name, email } = request.body
 
-    pool.query('INSERT INTO public.users (first_name, last_name, email) VALUES ($1, $2, $3)', [ first_name, last_name, email ], (error, results) => {
+    pool.query('INSERT INTO public.users (first_name, last_name, email) VALUES ($1, $2, $3)', [first_name, last_name, email], (error, results) => {
         if (error) {
             throw error
         }
         response.status(201).json('User added')
     })
-    
+}
+
+const userId = (request, response) => {
+    const { email } = request.params.email
+
+    pool.query('SELECT id_user FROM public.users WHERE email=$1', [email], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json(results.fields)
+    })
 }
 
 const deleteUser = (request, response) => {
@@ -48,9 +58,34 @@ const deleteUser = (request, response) => {
     })
 }
 
+const createUserDevice = (request, response) => {
+    const { id_user, id_device } = request.body
+
+    pool.query('INSERT INTO public.user_device (id_user, id_device) VALUES ($1, $2)', [id_user, id_device], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(201).json('User device added')
+    })
+}
+
+const addDevice = (response, results) => {
+    const { name } = request.body
+
+    pool.query('INSERT INTO public.device ( name )', [ name ], (error, results) => {
+        if(error){
+            throw error
+        }
+        response.status(201).json('Device added')
+    })
+}
+
 module.exports = {
     getDevices,
     getUsers,
     createUser,
-    deleteUser
+    deleteUser,
+    createUserDevice,
+    userId,
+    addDevice
 }
