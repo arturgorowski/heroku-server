@@ -26,7 +26,7 @@ const getUsers = (request, response) => {
     })
 }
 
-const createUser = (request, response) => {
+/*const createUser = (request, response) => {
     const { id_user, first_name, last_name, email } = request.body
 
     pool.query('INSERT INTO public.users (id_user, first_name, last_name, email) VALUES ($1, $2, $3, $4)', [id_user, first_name, last_name, email], (error, results) => {
@@ -35,7 +35,7 @@ const createUser = (request, response) => {
         }
         response.status(201).json('User added')
     })
-}
+}*/
 
 /*const deleteUser = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
@@ -51,6 +51,6 @@ const createUser = (request, response) => {
 module.exports = {
     getDevices,
     getUsers,
-    createUser,
+    //createUser,
     //deleteUser
 }
