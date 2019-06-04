@@ -51,6 +51,6 @@ const deleteUser = (request, response) => {
 module.exports = {
     getDevices,
     getUsers,
-    //createUser,
+    createUser,
     deleteUser
 }
