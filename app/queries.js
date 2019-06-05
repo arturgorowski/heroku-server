@@ -95,11 +95,11 @@ const addDevice = (request, response) => {
 const getUserDevice = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
 
-    pool.query('SELECT id_device, name FROM public.users NATURAL JOIN public.user_device NATURAL JOIN device WHERE id_user=$1', [id_user], (error, results) => {
+    pool.query('SELECT * FROM public.users NATURAL JOIN public.user_device NATURAL JOIN device WHERE id_user=$1', [id_user], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(200).json(results)
+        response.status(200).json(results.rows)
     })
 }
 
