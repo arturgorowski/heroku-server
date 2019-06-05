@@ -39,7 +39,7 @@ const createUser = (request, response) => {
 const userId = (request, response) => {
     const { email } = request.params.email
 
-    pool.query('SELECT id_user FROM public.users WHERE email=$1', [email], (error, results) => {
+    pool.query('SELECT id_user FROM public.users WHERE email="$1"', [email], (error, results) => {
         if (error) {
             throw error
         }
