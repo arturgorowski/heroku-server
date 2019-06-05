@@ -37,7 +37,7 @@ const createUser = (request, response) => {
 }
 
 const userId = (request, response) => {
-    const { email } = toString(request.params.email)
+    const { email } = request.query
 
     pool.query('SELECT id_user, first_name, last_name, email FROM public.users WHERE email=$1', [email], (error, results) => {
         if (error) {
@@ -62,6 +62,7 @@ const deleteDevice = (request, response) => {
 }
 const deleteUsers = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
+    
     pool.query('DELETE FROM public.users WHERE id_user = $1', [id_user], (error, results) => {
         if (error) {
             throw error
@@ -82,7 +83,7 @@ const createUserDevice = (request, response) => {
 }
 
 const getUserDevice = (request, response) => {
-    const { id_user } = parseInt(request.params.id_user)
+    const { id_user } = parseInt(request.params)
 
     pool.query('SELECT * FROM public.users NATURAL JOIN public.user_device NATURAL JOIN public.devices WHERE public.users.id_user=$1', [id_user], (error, results) => {
         if (error) {
