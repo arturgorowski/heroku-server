@@ -65,9 +65,9 @@ const deleteAccount = (request, response) => {
 }
 
 const deleteDevice = (request, response) => {
-    //const { id_user, id_device } = request.params
-    const id_user = request.params.id_user
-    const id_device = request.params.id_device
+    const { id_user, id_device } = request.params
+    //const id_user = request.params.id_user
+    //const id_device = request.params.id_device
 
     pool.query('DELETE FROM public.user_device WHERE id_user=$1 AND id_device=$2', [id_user, id_device], (error, results) => {
         if (error) {
