@@ -51,6 +51,7 @@ const deleteUser = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
 
     pool.query('DELETE FROM public.user_device WHERE id_user=$1', [id_user], (error, results)=>{
+        const { id_user } = this.id_user
         if(error){
             throw error
         }
