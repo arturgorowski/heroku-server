@@ -47,24 +47,24 @@ const userId = (request, response) => {
     })
 }
 
-const deleteUser = (request, response) => {
+const deleteDevice = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
 
-    pool.query('DELETE FROM public.user_device WHERE id_user=$1', [id_user], (error, results)=>{
-        const { id_user } = parseInt(request.params.id_user)
-        if(error){
+    pool.query('DELETE FROM public.user_device WHERE id_user=$1', [id_user], (error, results) => {
+        if (error) {
             throw error
         }
         response.status(200).json('User devices deleted')
-        pool.query('DELETE FROM public.users WHERE id_user = $1', [id_user], (error, results) => {
-            if (error) {
-                throw error
-            }
-            response.status(200).json('User deleted')
-        })
-        
     })
-    
+}
+const deleteUsers = (request, response) => {
+    const { id_user } = parseInt(request.params.id_user)
+    pool.query('DELETE FROM public.users WHERE id_user = $1', [id_user], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json('User deleted')
+    })
 }
 
 const createUserDevice = (request, response) => {
@@ -81,8 +81,8 @@ const createUserDevice = (request, response) => {
 const addDevice = (request, response) => {
     const { name } = request.body
 
-    pool.query('INSERT INTO public.device ( name )', [ name ], (error, results) => {
-        if(error){
+    pool.query('INSERT INTO public.device ( name )', [name], (error, results) => {
+        if (error) {
             throw error
         }
         response.status(201).json('Device added')
@@ -93,7 +93,7 @@ const getUserDevice = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
 
     pool.query('SELECT id_device, name FROM public.users NATURAL JOIN public.user_device NATURAL JOIN device WHERE id_user=$1', [id_user], (error, results) => {
-        if(error){
+        if (error) {
             throw error
         }
         response.status(200).json(results.rows)
@@ -104,7 +104,8 @@ module.exports = {
     getDevices,
     getUsers,
     createUser,
-    deleteUser,
+    deleteDevice,
+    deleteUsers,
     createUserDevice,
     userId,
     addDevice,
