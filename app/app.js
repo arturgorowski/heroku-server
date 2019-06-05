@@ -16,7 +16,7 @@ app.get('/get/users', getUsers)
 
 app.post('/post/users', createUser)
 
-app.delete('/delete/users/:id_user', deleteUser)
+app.put('/delete/users/:id_user', deleteUser)
 
 app.post('/post/createUserDevice', createUserDevice)
 
