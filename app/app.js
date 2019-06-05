@@ -1,7 +1,7 @@
 'use strict';
 import express from 'express';
 import bodyParser from 'body-parser';
-import { getDevices, getUsers, createUser, deleteDevice, deleteUsers, createUserDevice, userId, getUserDevice } from './queries'
+import { getDevices, getUsers, createUser, deleteDevice, deleteUsers, deleteUserDevice, createUserDevice, userId, getUserDevice } from './queries'
 
 const app = express();
 app.use(express.json());
@@ -16,7 +16,7 @@ app.get('/get/users', getUsers)
 
 app.post('/post/users', createUser)
 
-app.delete('/delete/users/:id_user', deleteDevice, deleteUsers)
+app.delete('/delete/users/:id_user', deleteUserDevice)
 
 app.post('/post/createUserDevice', createUserDevice)
 

@@ -47,6 +47,23 @@ const userId = (request, response) => {
     })
 }
 
+const deleteUserDevice = (request, response) => {
+    const { id_user } = request.params
+
+    pool.query('DELETE FROM public.user_device WHERE id_user=$1', [id_user], (error, results) => {
+        if (error) {
+            throw error
+        }
+        response.status(200).json('User devices deleted')
+        pool.query('DELETE FROM public.users WHERE id_user = $1', [id_user], (error, results) => {
+            if (error) {
+                throw error
+            }
+            response.status(200).json('User deleted')
+        })
+    })
+}
+
 const deleteDevice = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
 
@@ -55,9 +72,6 @@ const deleteDevice = (request, response) => {
             throw error
         }
         response.status(200).json('User devices deleted')
-        if(response.status===200){
-
-        }
     })
 }
 const deleteUsers = (request, response) => {
@@ -99,6 +113,7 @@ module.exports = {
     createUser,
     deleteDevice,
     deleteUsers,
+    deleteUserDevice,
     createUserDevice,
     userId,
     getUserDevice
