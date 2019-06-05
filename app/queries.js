@@ -83,7 +83,7 @@ const createUserDevice = (request, response) => {
 }
 
 const getUserDevice = (request, response) => {
-    const { id_user } = parseInt(request.params)
+    const { id_user } = request.params
 
     pool.query('SELECT * FROM public.users NATURAL JOIN public.user_device NATURAL JOIN public.devices WHERE public.users.id_user=$1', [id_user], (error, results) => {
         if (error) {
