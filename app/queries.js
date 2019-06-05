@@ -36,7 +36,7 @@ const createUser = (request, response) => {
     })
 }
 
-const userId = (request, response) => {
+const getUserId = (request, response) => {
     const { email } = request.params
 
     pool.query('SELECT id_user FROM public.users WHERE email=$1', [email], (error, results) => {
@@ -47,7 +47,7 @@ const userId = (request, response) => {
     })
 }
 
-const deleteUserDevice = (request, response) => {
+const deleteAccount = (request, response) => {
     const { id_user } = request.params
 
     pool.query('DELETE FROM public.user_device WHERE id_user=$1', [id_user], (error, results) => {
@@ -59,29 +59,19 @@ const deleteUserDevice = (request, response) => {
             if (error) {
                 throw error
             }
-            response.status(200).json('User deleted')
+            response.status(200).json('User account deleted')
         })
     })
 }
 
 const deleteDevice = (request, response) => {
-    const { id_user } = parseInt(request.params.id_user)
+    const { id_user, id_device } = request.params
 
-    pool.query('DELETE FROM public.user_device WHERE id_user=$1', [id_user], (error, results) => {
+    pool.query('DELETE FROM public.user_device WHERE id_user=$1 AND id_device=$2', [id_user, id_device], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(200).json('User devices deleted')
-    })
-}
-const deleteUsers = (request, response) => {
-    const { id_user } = parseInt(request.params.id_user)
-    
-    pool.query('DELETE FROM public.users WHERE id_user = $1', [id_user], (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(200).json('User deleted')
+        response.status(200).json('User device deleted')
     })
 }
 
@@ -112,9 +102,8 @@ module.exports = {
     getUsers,
     createUser,
     deleteDevice,
-    deleteUsers,
-    deleteUserDevice,
+    deleteAccount,
     createUserDevice,
-    userId,
+    getUserId,
     getUserDevice
 }
