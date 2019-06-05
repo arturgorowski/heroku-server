@@ -55,12 +55,14 @@ const deleteUser = (request, response) => {
         if(error){
             throw error
         }
+        response.status(200).json('User devices deleted')
         pool.query('DELETE FROM public.users WHERE id_user = $1', [id_user], (error, results) => {
             if (error) {
                 throw error
             }
             response.status(200).json('User deleted')
         })
+        
     })
     
 }
