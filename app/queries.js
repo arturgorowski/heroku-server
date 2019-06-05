@@ -55,6 +55,9 @@ const deleteDevice = (request, response) => {
             throw error
         }
         response.status(200).json('User devices deleted')
+        if(response.status===200){
+            
+        }
     })
 }
 const deleteUsers = (request, response) => {

@@ -20,7 +20,7 @@ app.delete('/delete/users/:id_user', deleteDevice, deleteUsers)
 
 app.post('/post/createUserDevice', createUserDevice)
 
-app.delete('/get/userId/:email', userId)
+app.get('/get/userId/:email', userId)
 
 app.post('/post/addDevice', addDevice)
 
