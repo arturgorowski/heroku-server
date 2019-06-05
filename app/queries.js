@@ -81,21 +81,10 @@ const createUserDevice = (request, response) => {
     })
 }
 
-const addDevice = (request, response) => {
-    const { name } = request.body
-
-    pool.query('INSERT INTO public.device ( name )', [name], (error, results) => {
-        if (error) {
-            throw error
-        }
-        response.status(201).json('Device added')
-    })
-}
-
 const getUserDevice = (request, response) => {
     const { id_user } = parseInt(request.params.id_user)
 
-    pool.query('SELECT * FROM public.users NATURAL JOIN public.user_device NATURAL JOIN public.device WHERE public.users.id_user=$1', [id_user], (error, results) => {
+    pool.query('SELECT * FROM public.users NATURAL JOIN public.user_device NATURAL JOIN public.devices WHERE public.users.id_user=$1', [id_user], (error, results) => {
         if (error) {
             throw error
         }
@@ -111,6 +100,5 @@ module.exports = {
     deleteUsers,
     createUserDevice,
     userId,
-    addDevice,
     getUserDevice
 }
