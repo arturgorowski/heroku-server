@@ -16,6 +16,7 @@ const getDevices = (request, response) => {
     })
 }
 
+
 const getUsers = (request, response) => {
     pool.query('SELECT id_user, first_name, last_name, email FROM public.users', (error, results) => {
         if (error) {
